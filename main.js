@@ -781,6 +781,7 @@ document.getElementById('msisdnForm')?.addEventListener('submit', async (e) => {
       return;
     }
     if (data.subscribed) {
+      localStorage.setItem('subscribedMsisdn', msisdn);
       hideMsisdnPopup();
       openGame(pendingGameUrl);
     } else {
@@ -1218,6 +1219,50 @@ async function loadCategoryGames() {
   }
 }
 
+
+// MY ACCOUNT – profile display
+(function initProfile() {
+  const msisdn = localStorage.getItem('subscribedMsisdn');
+  const profileCard = document.getElementById('profile-card');
+  const profileGuest = document.getElementById('profile-guest');
+  if (!profileCard) return; // not on myAccount page
+
+  if (msisdn) {
+    profileCard.style.display = 'flex';
+    profileGuest.style.display = 'none';
+    document.getElementById('profile-phone').textContent = '+' + msisdn;
+    document.getElementById('profile-status').textContent = window.t ? window.t('profileSubscribed') : 'Active Subscriber ✓';
+  } else {
+    profileCard.style.display = 'none';
+    profileGuest.style.display = 'flex';
+  }
+
+  document.getElementById('btn-logout')?.addEventListener('click', () => {
+    localStorage.removeItem('subscribedMsisdn');
+    profileCard.style.display = 'none';
+    profileGuest.style.display = 'flex';
+  });
+
+  document.getElementById('btn-unsubscribe')?.addEventListener('click', async () => {
+    const msg = document.getElementById('unsubscribe-msg');
+    msg.style.display = 'none';
+    try {
+      const res = await fetch(`/api/checkstatus?serviceid=1001&msisdn=${encodeURIComponent(msisdn)}&action=unsubscribe`);
+      const data = await res.json();
+      if (data.status === 'success') {
+        localStorage.removeItem('subscribedMsisdn');
+        profileCard.style.display = 'none';
+        profileGuest.style.display = 'flex';
+      } else {
+        msg.textContent = window.t ? window.t('popupErrGeneric') : 'Something went wrong. Please try again.';
+        msg.style.display = 'block';
+      }
+    } catch {
+      msg.textContent = window.t ? window.t('popupErrGeneric') : 'Something went wrong. Please try again.';
+      msg.style.display = 'block';
+    }
+  });
+})();
 
 window.scrollTo({ top: 0, behavior: "smooth" });
 Array(30).fill().forEach(generateCube);
