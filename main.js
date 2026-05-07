@@ -740,13 +740,19 @@ function openGame(gameUrl) {
   backgroundSound.pause();
 }
 
-// Intercept game clicks → show MSISDN popup
+// Intercept game clicks → show MSISDN popup only if not already subscribed
 document.addEventListener('click', (e) => {
   const link = e.target.closest('.softwareIconGameLink');
   if (link) {
     e.preventDefault();
     const gameUrl = link.dataset.gameUrl;
-    if (gameUrl) showMsisdnPopup(gameUrl);
+    if (!gameUrl) return;
+    const saved = localStorage.getItem('subscribedMsisdn');
+    if (saved) {
+      openGame(gameUrl);
+    } else {
+      showMsisdnPopup(gameUrl);
+    }
   }
 });
 
