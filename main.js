@@ -704,7 +704,7 @@ document.querySelectorAll("a").forEach((each) => {
   });
 });
 
-// MTN Sudan PIN Flow
+// MTN Nigeria PIN Flow
 const CHECK_STATUS_URL = '/api/checkstatus';
 const SERVICE_ID = '1001';
 
