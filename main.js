@@ -712,7 +712,7 @@ let pendingGameUrl = null;
 
 function showMsisdnPopup(gameUrl) {
   // If already logged in, open game directly
-  const saved = localStorage.getItem('aigamopedia_msisdn');
+  const saved = localStorage.getItem('Poker365_msisdn');
   if (saved) {
     openGame(gameUrl);
     return;
@@ -787,7 +787,7 @@ document.getElementById('msisdnForm')?.addEventListener('submit', async (e) => {
       return;
     }
     if (data.subscribed) {
-      localStorage.setItem('aigamopedia_msisdn', document.getElementById('msisdn_input').value.trim());
+      localStorage.setItem('Poker365_msisdn', document.getElementById('msisdn_input').value.trim());
       hideMsisdnPopup();
       openGame(pendingGameUrl);
     } else {

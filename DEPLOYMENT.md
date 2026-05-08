@@ -53,15 +53,15 @@ The repo includes **`vercel.json`** so `/ar` (Arabic) works on Vercel (no 404).
 2. Under **Import Git Repository**, click **Import** next to **`akashzeen-art/AiGameopedia`**.  
    If it doesn’t appear, click **Adjust GitHub App Permissions** and allow Vercel access to the repo, then try again.
 3. **Configure the project:**
-   - **Project Name:** set to **`ai-gamopedia`** (or any name; this becomes `ai-gamopedia.vercel.app`).
+   - **Project Name:** set to **`ai-Poker365`** (or any name; this becomes `ai-Poker365.vercel.app`).
    - **Framework Preset:** choose **Other** (important – do not use Express/Node).
    - **Build Command:** leave empty (the repo’s `vercel.json` uses `sh scripts/vercel-build.sh`).
    - **Output Directory:** leave empty (repo uses `.vercel/output/static`).
    - **Install Command:** leave empty (repo skips install).
 4. Click **Deploy**. Wait for the build to finish.
 5. Your site will be at:
-   - **English:** `https://ai-gamopedia.vercel.app/` (or the name you chose).
-   - **Arabic:** `https://ai-gamopedia.vercel.app/ar`
+   - **English:** `https://ai-Poker365.vercel.app/` (or the name you chose).
+   - **Arabic:** `https://ai-Poker365.vercel.app/ar`
 
 ### If the project already exists but you can’t find it
 

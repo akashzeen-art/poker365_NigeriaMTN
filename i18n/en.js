@@ -54,7 +54,7 @@ window.I18N_EN = {
   unsubscribe: 'Unsubscribe',
   accountLoginPrompt: 'Enter your mobile number to view your account',
   accountCheckBtn: 'Check Status',
-  accountService: 'Service: AiGamopedia MTN Sudan',
+  accountService: 'Service: Poker365 MTN Sudan',
   accountStatus: 'Subscription Status',
   accountActive: 'Active ✓',
   accountInactive: 'Not Subscribed',
@@ -85,7 +85,7 @@ window.I18N_EN = {
   gameAlt: 'Game',
   logoAlt: 'AiGameopedia logo',
   // MSISDN Popup
-  popupTitle: 'AiGamopedia',
+  popupTitle: 'Poker365',
   popupSubtitle: 'Enter your mobile number to access games',
   popupLabel: 'Mobile Number',
   popupPlaceholder: '',

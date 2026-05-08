@@ -54,7 +54,7 @@ window.I18N_AR = {
   unsubscribe: 'إلغاء الاشتراك',
   accountLoginPrompt: 'أدخل رقم هاتفك لعرض حسابك',
   accountCheckBtn: 'تحقق من الحالة',
-  accountService: 'الخدمة: AiGamopedia MTN السودان',
+  accountService: 'الخدمة: Poker365 MTN السودان',
   accountStatus: 'حالة الاشتراك',
   accountActive: 'نشط ✓',
   accountInactive: 'غير مشترك',
@@ -85,7 +85,7 @@ window.I18N_AR = {
   gameAlt: 'لعبة',
   logoAlt: 'شعار AiGameopedia',
   // MSISDN Popup
-  popupTitle: 'AiGamopedia',
+  popupTitle: 'Poker365',
   popupSubtitle: 'أدخل رقم هاتفك للوصول إلى الألعاب',
   popupLabel: 'رقم الجوال',
   popupPlaceholder: '',

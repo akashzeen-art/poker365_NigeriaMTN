@@ -64,7 +64,7 @@ async function doLogin() {
     if (data.status !== 'success') { showError(tr('popupErrGeneric')); return; }
     if (!data.serviceExists) { showError(tr('popupErrUnavailable')); return; }
 
-    localStorage.setItem('aigamopedia_msisdn', input);
+    localStorage.setItem('Poker365_msisdn', input);
     await loadProfile(input);
   } catch {
     btn.disabled = false;
@@ -75,7 +75,7 @@ async function doLogin() {
 
 function init() {
   // Auto-load if already logged in
-  const saved = localStorage.getItem('aigamopedia_msisdn');
+  const saved = localStorage.getItem('Poker365_msisdn');
   if (saved) { loadProfile(saved); return; }
 
   // Login button
@@ -88,7 +88,7 @@ function init() {
 
   // Logout
   document.getElementById('account_logout_btn')?.addEventListener('click', () => {
-    localStorage.removeItem('aigamopedia_msisdn');
+    localStorage.removeItem('Poker365_msisdn');
     document.getElementById('account-profile').style.display = 'none';
     document.getElementById('account-login').style.display = 'flex';
     document.getElementById('account_msisdn').value = '';
