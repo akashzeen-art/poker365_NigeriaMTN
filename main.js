@@ -762,8 +762,8 @@ document.getElementById('closeMsisdnPopup')?.addEventListener('click', hideMsisd
 // Submit MSISDN → check subscription
 document.getElementById('msisdnForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const msisdn = '249' + document.getElementById('msisdn_input').value.trim();
-  if (!/^249\d{9}$/.test(msisdn)) {
+  const msisdn = '234' + document.getElementById('msisdn_input').value.trim();
+  if (!/^234\d{10}$/.test(msisdn)) {
     showMsgId('msisdn_invalid');
     return;
   }
