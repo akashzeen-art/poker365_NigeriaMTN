@@ -14,10 +14,10 @@
     <meta name="theme-color" content="#000000">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="icon" href="./images/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+    <link rel="icon" href="./icons/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/favicon/apple-touch-icon.png">
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Playfair+Display&family=Roboto+Slab&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
@@ -54,32 +54,51 @@
       </div>
     </nav>
     <main>
-
       <section id="section2">
         <div class="sec5Tit content1" data-i18n="myAccountTitle">My Account</div>
-        <div class="secContact content2" id="profile-card" style="display:none;flex-direction:column;align-items:center;gap:1rem;">
-          <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#00c5eb,#006177);display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:2rem;">👤</span>
+
+        <!-- NOT LOGGED IN -->
+        <div id="account-login" style="display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2rem;">
+          <p style="color:beige;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;text-align:center;" data-i18n="accountLoginPrompt">Enter your mobile number to view your account</p>
+          <div style="display:flex;align-items:center;border:2px solid #ffc800;border-radius:0.75rem;overflow:hidden;max-width:320px;width:100%;">
+            <span style="padding:0.6rem 0.75rem;background:rgba(255,200,0,0.1);color:#ffc800;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;font-weight:700;border-right:2px solid #ffc800;white-space:nowrap;">+249</span>
+            <input id="account_msisdn" type="tel" placeholder="998688782" maxlength="9" autocomplete="off" style="flex:1;border:none;background:transparent;padding:0.6rem 0.75rem;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;outline:none;color:beige;">
           </div>
-          <div style="font-family:'Josefin Sans',sans-serif;font-size:1rem;color:beige;text-align:center;">
-            <div style="font-size:0.78rem;opacity:0.6;margin-bottom:0.2rem;" data-i18n="profilePhone">Mobile Number</div>
-            <div id="profile-phone" style="font-weight:700;font-size:1.1rem;"></div>
-          </div>
-          <div style="font-family:'Josefin Sans',sans-serif;font-size:0.85rem;color:#03fc2c;font-weight:700;" id="profile-status"></div>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
-            <button id="btn-unsubscribe" aria-label="unsubscribe" data-i18n="unsubscribe" style="padding:0.5rem 1.2rem;background:transparent;border:2px solid #dc2626;color:#dc2626;font-family:'Josefin Sans',sans-serif;font-weight:700;border-radius:0.6rem;cursor:pointer;">Unsubscribe</button>
-            <button id="btn-logout" aria-label="logout" data-i18n="logout" style="padding:0.5rem 1.2rem;background:#ff9e03;border:none;color:#000;font-family:'Josefin Sans',sans-serif;font-weight:700;border-radius:0.6rem;cursor:pointer;">Logout</button>
-          </div>
-          <p id="unsubscribe-msg" style="display:none;font-size:0.78rem;color:#dc2626;font-family:'Josefin Sans',sans-serif;"></p>
+          <p id="account_error" style="display:none;color:#dc2626;font-family:'Josefin Sans',sans-serif;font-size:0.8rem;text-align:center;"></p>
+          <button id="account_login_btn" aria-label="check account" data-i18n="accountCheckBtn" style="background:#ffc800;color:#000;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;padding:0.6rem 2rem;border-radius:0.75rem;border:none;cursor:pointer;">Check Status</button>
         </div>
-        <div class="secContact content2" id="profile-guest" style="flex-direction:column;align-items:center;gap:0.75rem;">
-          <p style="font-family:'Josefin Sans',sans-serif;color:beige;font-size:0.9rem;" data-i18n="profileGuest">No account found. Please subscribe to access games.</p>
-          <button id="btn-go-subscribe" aria-label="go subscribe" data-i18n="popupSubmit" onclick="window.location.href='./index.html'" style="padding:0.5rem 1.4rem;background:#ff9e03;border:none;color:#000;font-family:'Josefin Sans',sans-serif;font-weight:700;border-radius:0.6rem;cursor:pointer;">Play Now</button>
+
+        <!-- LOGGED IN: profile card -->
+        <div id="account-profile" style="display:none;flex-direction:column;align-items:center;gap:1.25rem;padding:2rem;">
+          <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#00c5eb,#006177);display:flex;align-items:center;justify-content:center;font-size:2rem;">👤</div>
+          <p id="profile_msisdn" style="color:#ffc800;font-family:'Josefin Sans',sans-serif;font-size:1.1rem;font-weight:700;margin:0;"></p>
+          <p style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;margin:0;" data-i18n="accountService">Service: AiGamopedia MTN Sudan</p>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,200,0,0.3);border-radius:1rem;padding:1.25rem 1.5rem;width:100%;max-width:340px;box-sizing:border-box;display:flex;flex-direction:column;gap:0.9rem;">
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;" data-i18n="accountStatus">Status</span>
+              <span id="profile_status" style="font-family:'Josefin Sans',sans-serif;font-size:0.85rem;font-weight:700;"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;" data-i18n="accountPrice">Price</span>
+              <span id="profile_price" style="color:beige;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;" data-i18n="accountValidity">Validity</span>
+              <span id="profile_validity" style="color:beige;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;" data-i18n="accountActDate">Activated</span>
+              <span id="profile_actdate" style="color:beige;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.8rem;" data-i18n="accountRenewDate">Next Renewal</span>
+              <span id="profile_renewdate" style="color:beige;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;"></span>
+            </div>
+          </div>
+          <button id="account_logout_btn" aria-label="logout" data-i18n="accountLogout" style="background:transparent;color:#dc2626;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:0.9rem;text-transform:uppercase;padding:0.5rem 1.5rem;border-radius:0.75rem;border:2px solid #dc2626;cursor:pointer;">Logout</button>
         </div>
+
       </section>
-      
-
-
     </main>
     <footer>
       <div class="copyright">
@@ -96,5 +115,6 @@
       </div>
       <a href="#section1" class="moveUp" aria-label="scroll to top"></a>
     </footer>
+    <script src="./myAccount.js"></script>
   </body>
 </html>
