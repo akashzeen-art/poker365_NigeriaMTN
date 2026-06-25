@@ -88,7 +88,7 @@ window.I18N_EN = {
   popupTitle: 'Poker365',
   popupSubtitle: 'Enter your mobile number to access games',
   popupLabel: 'Mobile Number',
-  popupPlaceholder: '8031234567',
+  popupPlaceholder: '',
   popupSubmit: 'Play Now',
   popupFooter: 'Not subscribed? You will be redirected to subscribe.',
   popupErrInvalid: 'Please enter a valid Nigeria number (+234...)',

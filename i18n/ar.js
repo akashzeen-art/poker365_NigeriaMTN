@@ -88,7 +88,7 @@ window.I18N_AR = {
   popupTitle: 'Poker365',
   popupSubtitle: 'أدخل رقم هاتفك للوصول إلى الألعاب',
   popupLabel: 'رقم الجوال',
-  popupPlaceholder: '8031234567',
+  popupPlaceholder: '',
   popupSubmit: 'العب الآن',
   popupFooter: 'غير مشترك؟ سيتم تحويلك للاشتراك.',
   popupErrInvalid: 'يرجى إدخال رقم نيجيري صحيح (+234...)',
