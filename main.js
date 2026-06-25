@@ -706,7 +706,7 @@ document.querySelectorAll("a").forEach((each) => {
 
 // MTN Nigeria PIN Flow
 const CHECK_STATUS_URL = '/api/checkstatus';
-const SERVICE_ID = '1001';
+const SERVICE_ID = '1003';
 
 let pendingGameUrl = null;
 
