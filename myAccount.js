@@ -1,6 +1,6 @@
 const SERVICE_ID = '1001';
 const CHECK_STATUS_URL = '/api/checkstatus';
-const SUBSCRIPTION_INFO_URL = '/api/subscriptioninfo';
+const SUBSCRIPTION_INFO_URL = 'https://wap.zeendcb.com/vaspay/subscriptioninfo';
 
 function tr(key) { return typeof window.t === 'function' ? window.t(key) : key; }
 
@@ -20,14 +20,14 @@ function hideError() {
 }
 
 function renderProfile(msisdn, info) {
-  document.getElementById('profile_msisdn').textContent = '+249' + msisdn;
+  document.getElementById('profile_msisdn').textContent = '+234' + msisdn;
 
   const isActive = info?.response === 'ACTIVE';
   const statusEl = document.getElementById('profile_status');
   statusEl.textContent = isActive ? tr('accountActive') : tr('accountInactive');
   statusEl.style.color = isActive ? '#22c55e' : '#f97316';
 
-  document.getElementById('profile_price').textContent = info?.pricePoint ? info.pricePoint + ' SDG' : '-';
+  document.getElementById('profile_price').textContent = info?.pricePoint ? info.pricePoint + ' NGN' : '-';
   document.getElementById('profile_validity').textContent = info?.validity ? info.validity + ' ' + tr('accountDay') : '-';
   document.getElementById('profile_actdate').textContent = formatDate(info?.actDate);
   document.getElementById('profile_renewdate').textContent = formatDate(info?.renewDate);
@@ -38,7 +38,7 @@ function renderProfile(msisdn, info) {
 
 async function loadProfile(msisdn) {
   try {
-    const res = await fetch(`${SUBSCRIPTION_INFO_URL}?serviceid=${SERVICE_ID}&msisdn=249${msisdn}`);
+    const res = await fetch(`${SUBSCRIPTION_INFO_URL}?serviceid=${SERVICE_ID}&msisdn=234${msisdn}`);
     const info = await res.json();
     renderProfile(msisdn, info);
   } catch {
@@ -48,7 +48,7 @@ async function loadProfile(msisdn) {
 
 async function doLogin() {
   const input = document.getElementById('account_msisdn').value.trim();
-  if (!/^\d{9}$/.test(input)) { showError(tr('popupErrInvalid')); return; }
+  if (!/^\d{10}$/.test(input)) { showError(tr('popupErrInvalid')); return; }
   hideError();
 
   const btn = document.getElementById('account_login_btn');
@@ -56,7 +56,7 @@ async function doLogin() {
   btn.textContent = '...';
 
   try {
-    const res = await fetch(`${CHECK_STATUS_URL}?serviceid=${SERVICE_ID}&msisdn=249${input}`);
+    const res = await fetch(`${CHECK_STATUS_URL}?serviceid=${SERVICE_ID}&msisdn=234${input}`);
     const data = await res.json();
     btn.disabled = false;
     btn.textContent = tr('accountCheckBtn');
